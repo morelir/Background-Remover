@@ -1,0 +1,24 @@
+.bg_div_cont{
+    
+    width:800px;
+    height:500px;
+    margin:0 auto;
+    margin-top:110px;
+    border-radius: 20px;
+    box-shadow: 2px 0px 10px black;
+    background-color: #222A34;
+}
+
+.bg_div_header{
+    color:white;
+    font-size: 30px;
+    text-align: center;
+    padding-right:25px;
+    padding-top: 10px;
+
+}
+
+.bg_div_header_button{
+  
+
+}
