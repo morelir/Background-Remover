@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import BgRemove from './BgRemove';
 
 function App() {
