@@ -1,65 +1,12 @@
-// .bg_cont {
-//   width: 1200px;
-//   height: 500px;
-//   margin: 0 auto;
-//   margin-top: 110px;
-//   border-radius: 20px;
-//   box-shadow: 2px 0px 10px black;
-//   background-color: #222a34;
-// }
-
-// .bg_header {
-//   position: relative;
-// }
-
-// .close_img {
-//   position: absolute;
-//   left: 16px;
-//   top: 16px;
-//   width: 12px;
-
-// }
-
-// .bg_header_title {
-//   color: white;
-//   font-size: 30px;
-//   text-align: right;
-//   padding-right: 25px;
-//   padding-top: 10px;
-// }
-
-// .bg_header_second_subdiv{
-//     display: flex;
-//     gap:32px;
-// }
-
-// .bg_header_button {
-//   background-color: #475366;
-//   border: none;
-//   color: white;
-//   height: 26px;
-//   border-radius: 25px;
-
-//   margin-left: 20px;
-//   background-image: url("./assets/Upload.png");
-//   width: 140px;
-//   background-repeat: no-repeat;
-//   background-position: 5px 6px;
-
-// }
-
-// .bg_header_subtext {
-//   color: white;
-//   text-align: left;
-// }
-
 $bg_cont_background-color: #222a34;
-$main_cont_background-color_1: #2f3a4b;
-$main_cont_background-color_2: #161b21;
+:root {
+  --card_background-color: #2f3a4b; // or any global you wish to share with components
+  --card_middle_background-color: #161b21;
+}
 
 .bg_cont {
-  width: 100rem;
-  height: 70rem;
+  width: 110rem;
+
   margin: 0 auto;
   margin-top: 11rem;
   border-radius: 10px;
@@ -83,11 +30,11 @@ $main_cont_background-color_2: #161b21;
       font-size: 4.8rem;
       text-align: right;
       padding-right: 2.5rem;
-      padding-top: 1rem;
+      
     }
 
     .sub_cont {
-      margin-top: 1.2rem;
+      margin-top: 0.2rem;
       display: flex;
       gap: 3.2rem;
     }
@@ -122,7 +69,7 @@ $main_cont_background-color_2: #161b21;
     display: flex;
     gap: 0.8rem;
     margin-top: 1.2rem;
-    height: 50rem;
+    height: 65rem;
     padding-bottom: 0.8rem;
 
     .main_card_left {
@@ -131,29 +78,31 @@ $main_cont_background-color_2: #161b21;
       align-items: center;
       position: relative;
 
-      .tab_button_no_bg,
-      .tab_button_original {
+      .nav_tabs {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 0.8rem;
         position: absolute;
-        font-size: 2.4rem;
-      }
-      .tab_button_no_bg {
-        top: 2%;
-        right: 5%;
+        top: 2.5%;
+        right: 0%;
+
+        .nav_link {
+          color: white;
+          text-decoration: none;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 0.8rem;
+          font-size: 2.2rem;
+          padding: 0 3rem 1rem 3rem;
+
+          img {
+            width: 1.6rem;
+          }
+        }
+        .nav_link.active {
+          box-shadow: inset 0 -13px 0px -10px #e005e0;
+        }
       }
 
-      .tab_button_original {
-        top: 2%;
-        right: 22%;
-      }
-
-      .original {
-        width: 100%;
-        height: 100%;
-      }
 
       .main_left_footer {
         font-size: 1.6rem;
@@ -161,14 +110,14 @@ $main_cont_background-color_2: #161b21;
         display: flex;
         align-items: center;
         gap: 5rem;
-        top: 92%;
+        top: 93%;
         left: 2%;
 
         .main_left_footer_text {
           direction: rtl;
         }
 
-        .main_left_footer_btn{
+        .main_left_footer_btn {
           font-family: "Aduma";
           font-size: 1.6rem;
           background-color: #475366;
@@ -190,10 +139,11 @@ $main_cont_background-color_2: #161b21;
       align-items: center;
     }
 
-    .main_card_middle {
-      height: 40rem;
-      width: 100%;
-    }
+    // .main_card_middle {
+    //   height: 48rem;
+    //   width: 100%;
+    //   padding: 2rem 0.8rem;
+    // }
   }
 
   .footer_cont {

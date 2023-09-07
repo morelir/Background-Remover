@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import close from "./assets/close.png";
 import uplaod from "./assets/Upload.png";
 import logo from "./assets/logo.png";
@@ -8,9 +8,18 @@ import terms from "./assets/eula.png";
 import noBackground from "./assets/Cleanup Edges.png";
 import "./BgRemove.scss";
 import Card from "./shared/Card";
-import MiddleCard from "./shared/MiddleCard";
+
+import DownloadImg from "./DownloadImg";
+import ImageDis from "./ImageDis";
 
 const BigRemove = () => {
+  const [navLinkName, setNavLinkName] = useState("no_bg");
+
+  const navLinkHandler = (e) => {
+    e.preventDefault();
+    setNavLinkName(e.currentTarget.id);
+  };
+
   return (
     <div className="bg_cont">
       <div className="bg_header">
@@ -27,19 +36,28 @@ const BigRemove = () => {
 
       <div className="main_cont">
         <Card className="main_card_left">
-          <div className="tab_button_original">
-            <span>מקורי</span>
-            <img className="original" src={original} alt="original" />
-          </div>
-          <div className="tab_button_no_bg">
-            <span>הוסר רקע</span>
-            <img
-              className="noBackground"
-              src={noBackground}
-              alt="noBackground"
-            />
-          </div>
-          <MiddleCard className="main_card_middle"></MiddleCard>
+          <nav className="nav_tabs">
+            <a
+              className={`nav_link ${navLinkName === "original" && "active"}`}
+              id="original"
+              href="/"
+              onClick={navLinkHandler}
+            >
+              <span>מקורי</span>
+              <img src={original} alt="original" />
+            </a>
+            <a
+              className={`nav_link ${navLinkName === "no_bg" && "active"}`}
+              id="no_bg"
+              href="/"
+              onClick={navLinkHandler}
+            >
+              <span>הוסר רקע</span>
+              <img src={noBackground} alt="noBackground" />
+            </a>
+          </nav>
+          {navLinkName === "no_bg" ? <ImageDis /> : <ImageDis imgOnly />}
+
           <div className="main_left_footer">
             <button className="main_left_footer_btn">
               <img src={terms} alt="terms" />
@@ -52,7 +70,19 @@ const BigRemove = () => {
           </div>
         </Card>
         <Card className="main_card_right">
-          <MiddleCard className="main_card_middle"></MiddleCard>
+          <DownloadImg
+            title="תמונה חינם"
+            subtitle="תצוגה מקדימה של תמונה 612x408"
+            buttonText="הורד"
+            subsubtext="איכות טובה עד 0.25 מגה פיקסל"
+          />
+          <DownloadImg
+            title="Pro"
+            subtitle="תצוגה מקדימה של תמונה 1280x1920"
+            buttonText="הורד HD"
+            subsubtext="איכות הטובה ביותר עד 25 מגה פיקסל"
+            new
+          />
         </Card>
       </div>
 

@@ -1,8 +1,14 @@
-$card_background-color:#2f3a4b;
-
-
-
 .card {
   border-radius: 10px;
-  background-color: $card_background-color;
+  background-color: var(--card_background-color);
+
+  .card_middle {
+    background-color: var(--card_middle_background-color);
+    height: 53rem;
+    width: 100%;
+    padding: 1.6rem 0.8rem;
+  
+  }
 }
+
+

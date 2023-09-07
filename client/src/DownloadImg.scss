@@ -1,0 +1,42 @@
+.downloadImg_cont {
+  direction: rtl;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding: 4rem 0rem;
+  width: 90%;
+  margin: 0 auto;
+
+  .downloadImg_title {
+    font-size: 3.2rem;
+    display:flex;
+  }
+  
+  .downloadImg_subtitle {
+  }
+
+  .downloadImg_button {
+    font-family: "Aduma";
+    font-size: 2rem;
+    background-color: inherit;
+    padding: 0.8rem 0;
+    color: rgb(8, 137, 206);
+    //special config for border radius and linear gradiant
+    border:3px solid #0000;
+    border-radius:50px;
+    background:
+        linear-gradient(var(--card_middle_background-color),var(--card_middle_background-color)) padding-box,
+        linear-gradient(to left,rgb(8, 206, 203),rgb(27, 95, 221)) border-box;
+        
+    }
+
+  .downloadImg_subsubtext {
+    font-size: 1.6rem;
+    display: flex;
+    gap:0.4rem;
+  }
+}
+
+.downloadImg_cont:not(:last-child) {
+  border-bottom: 1px solid white;
+}
