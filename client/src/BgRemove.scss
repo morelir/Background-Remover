@@ -1,6 +1,7 @@
 $bg_cont_background-color: #222a34;
 :root {
-  --card_background-color: #2f3a4b; // or any global you wish to share with components
+  --bg_cont_background-color:#222a34;
+  --card_background-color: #2f3a4b; // global  with components
   --card_middle_background-color: #161b21;
 }
 
@@ -30,7 +31,6 @@ $bg_cont_background-color: #222a34;
       font-size: 4.8rem;
       text-align: right;
       padding-right: 2.5rem;
-      
     }
 
     .sub_cont {
@@ -52,6 +52,7 @@ $bg_cont_background-color: #222a34;
       justify-content: center;
       align-items: center;
       gap: 0.8rem;
+      cursor: pointer;
       // background-image: url("./assets/Upload.png");
       // background-repeat: no-repeat;
       // background-position: 0% 0%;
@@ -103,7 +104,6 @@ $bg_cont_background-color: #222a34;
         }
       }
 
-
       .main_left_footer {
         font-size: 1.6rem;
         position: absolute;
@@ -117,6 +117,8 @@ $bg_cont_background-color: #222a34;
           direction: rtl;
         }
 
+       
+
         .main_left_footer_btn {
           font-family: "Aduma";
           font-size: 1.6rem;
@@ -128,8 +130,12 @@ $bg_cont_background-color: #222a34;
           display: flex;
           justify-content: center;
           align-items: center;
-          gap: 0.8rem;
+          gap: 0.4rem;
+
+          
         }
+
+        
       }
     }
 
@@ -139,11 +145,6 @@ $bg_cont_background-color: #222a34;
       align-items: center;
     }
 
-    // .main_card_middle {
-    //   height: 48rem;
-    //   width: 100%;
-    //   padding: 2rem 0.8rem;
-    // }
   }
 
   .footer_cont {
@@ -170,4 +171,9 @@ $bg_cont_background-color: #222a34;
       }
     }
   }
+}
+
+.takanon_popup{
+  font-size: 2rem;
+  direction: rtl;
 }

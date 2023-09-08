@@ -16,27 +16,28 @@ const ImageDis = (props) => {
 
   return (
     <div className="img_display_cont">
-      {!props.imgOnly && (
-        <div className="img_display_subcont">
-          <p className="subcont_text">
-            <img src={warning} alt="warning" />
-            <span>
-              אל תשכח להוריד את הקבצים שלך. הם ימחקו אוטומטית כשתצא מהדף
-            </span>
-          </p>
-          <button className="color_btn" onClick={btnColorHandler}>
-            <span>צבע רקע</span>
-            <div className="color_choose" style={{ backgroundColor: color }} />
-            <input
-              className="color_input"
-              type="color"
-              ref={colorInputRef}
-              value="#d4d4d4"
-              onChange={inputColorChange}
-            />
-          </button>
-        </div>
-      )}
+      <div
+        className="img_display_subcont"
+        style={{ visibility: props.imgOnly ? "hidden" : "" }}
+      >
+        <p className="subcont_text">
+          <img src={warning} alt="warning" />
+          <span>
+            אל תשכח להוריד את הקבצים שלך. הם ימחקו אוטומטית כשתצא מהדף
+          </span>
+        </p>
+        <button className="color_btn" onClick={btnColorHandler}>
+          <span>צבע רקע</span>
+          <div className="color_choose" style={{ backgroundColor: color }} />
+          <input
+            className="color_input"
+            type="color"
+            ref={colorInputRef}
+            value="#d4d4d4"
+            onChange={inputColorChange}
+          />
+        </button>
+      </div>
 
       <div className="image_place"></div>
     </div>

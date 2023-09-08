@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import close from "./assets/close.png";
 import uplaod from "./assets/Upload.png";
 import logo from "./assets/logo.png";
@@ -8,16 +8,30 @@ import terms from "./assets/eula.png";
 import noBackground from "./assets/Cleanup Edges.png";
 import "./BgRemove.scss";
 import Card from "./shared/Card";
-
 import DownloadImg from "./DownloadImg";
 import ImageDis from "./ImageDis";
+import Modal from "./shared/Modal";
 
 const BigRemove = () => {
+  const fileInputRef = useRef();
   const [navLinkName, setNavLinkName] = useState("no_bg");
+  const [showPopup, setShowPopup] = useState(false);
 
   const navLinkHandler = (e) => {
     e.preventDefault();
     setNavLinkName(e.currentTarget.id);
+  };
+
+  const fileUploadClick = () => {
+    fileInputRef.current.click();
+  };
+
+  const openPopup = () => {
+    setShowPopup(true);
+  };
+
+  const closePopup = () => {
+    setShowPopup(false);
   };
 
   return (
@@ -26,10 +40,11 @@ const BigRemove = () => {
         <img src={close} className="close_img" alt="close" />
         <div className="bg_header_title">העלאת תמונה כדי להסיר את הרקע</div>
         <div className="sub_cont">
-          <button className="bg_header_button">
+          <button className="bg_header_button" onClick={fileUploadClick}>
             <img src={uplaod} alt="upload" />
             <span>העלאת תמונה</span>
           </button>
+          <input ref={fileInputRef} type="file" style={{ display: "none" }} />
           <div className="bg_header_subtext">png, jpeg :פורמטים נתמכים</div>
         </div>
       </div>
@@ -59,7 +74,7 @@ const BigRemove = () => {
           {navLinkName === "no_bg" ? <ImageDis /> : <ImageDis imgOnly />}
 
           <div className="main_left_footer">
-            <button className="main_left_footer_btn">
+            <button className="main_left_footer_btn" onClick={openPopup}>
               <img src={terms} alt="terms" />
               <span>תקנון החברה</span>
             </button>
@@ -97,6 +112,19 @@ const BigRemove = () => {
           <img className="banner_img" src={banner} alt="banner" />
         </a>
       </div>
+
+      <Modal
+        className="takanon_popup"
+        show={showPopup}
+        onCancel={closePopup}
+        header="תקנון"
+      >
+        לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית לורם איפסום דולור
+        סיט אמט, קונסקטורר אדיפיסינג אלית. סת אלמנקום ניסי נון ניבאה. דס
+        איאקוליס וולופטה דיאם. וסטיבולום אט דולור, קראס אגת לקטוס וואל אאוגו
+        וסטיבולום סוליסי טידום בעליק. קונדימנטום קורוס בליקרה, נונסטי קלובר
+        בריקנה סטום, לפריקך תצטריק לרטי.
+      </Modal>
     </div>
   );
 };
