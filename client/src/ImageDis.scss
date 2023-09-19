@@ -4,7 +4,8 @@
   .img_display_subcont {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: end;
+    gap:1rem;
     padding: 0 0.8rem;
 
     .subcont_text {
@@ -16,11 +17,13 @@
       -webkit-background-clip: text; /* For Safari/WebKit-based browsers */
       background-clip: text;
       color: transparent;
+      margin-left:auto;
 
       img {
         width: 1.6rem;
       }
     }
+    
     .color_btn {
       position: relative;
       font-family: "Aduma";
@@ -33,10 +36,12 @@
       display: flex;
       align-items: center;
       gap: 1rem;
+      cursor: pointer;
 
       .color_input {
         position: absolute;
-        opacity: 0;
+        // opacity: 0;
+        visibility: hidden;
       }
 
       .color_choose {
@@ -47,13 +52,37 @@
         border-radius: 50px 0 0 50px;
       }
     }
+
+    .confirm_color_btn {
+      font-family: "Aduma";
+      font-size: 1.6rem;
+      background-color: inherit;
+      padding: 0.6rem 2rem 0.6rem 2rem;
+      color: white;
+      border: 1px solid white;
+      border-radius: 50px;
+      cursor: pointer;
+    }
+
+    .confirm_color_btn:disabled {
+      cursor: not-allowed;
+    }
   }
 
+  .image_place {
+    width: 100%;
+    height: 45rem;
+    border: 1px solid white;
+    margin-top: 2rem;
+    overflow: auto;
+    direction:ltr;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  .image_place{
-    width:100% ;
-    height:100%;
-    border:1px solid white;
-    margin-top:2rem;
+    .uploaded_img {
+      width: 100%;
+      height: 100%;
+    }
   }
 }

@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ES2021" /* Specify the version of ECMAScript you are targeting. */,
+    "module": "NodeNext" /* Specify module code generation. */,
+    "moduleResolution": "NodeNext",
+    "outDir": "./dist" /* Output directory for transpiled files. */,
+    "rootDir": "./src" /* Source directory where your TypeScript files are located. */,
+    "strict": true /* Enable all strict type-checking options. */,
+    "esModuleInterop": true /* Allow compatibility with CommonJS modules. */,
+    "skipLibCheck": true /* Skip type checking of declaration files. */,
+    "forceConsistentCasingInFileNames": true /* Enforce consistent file naming. */,
+    "resolveJsonModule": true /* Allow importing JSON files as modules. */,
+    "declaration": true /* Generate declaration files (.d.ts). */,
+    "sourceMap": true /* Generate source maps for debugging. */
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/index.ts",
+    "src/routers/imageRouter.ts"
+  ] /* Specify the files to include in compilation. */,
+  "exclude": [
+    "node_modules"
+  ] /* Specify the files to exclude from compilation. */
+}

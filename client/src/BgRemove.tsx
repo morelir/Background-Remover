@@ -11,19 +11,49 @@ import Card from "./shared/Card";
 import DownloadImg from "./DownloadImg";
 import ImageDis from "./ImageDis";
 import Modal from "./shared/Modal";
+import { createApiClient } from "./core/api";
+
+const api = createApiClient();
 
 const BigRemove = () => {
-  const fileInputRef = useRef();
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [navLinkName, setNavLinkName] = useState("no_bg");
   const [showPopup, setShowPopup] = useState(false);
+  const [showUploadFileError, setShowUploadFileError] = useState(false);
+  const [uploadedImg, setUploadedImg] = useState<string>();
+  const [uploadedImgNoBg, setUploadedImgNoBg] = useState<string>();
+  const [isLoading, setIsLoading] = useState(false);
 
-  const navLinkHandler = (e) => {
+
+  const navLinkHandler = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     setNavLinkName(e.currentTarget.id);
   };
 
   const fileUploadClick = () => {
-    fileInputRef.current.click();
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
+
+  const fileUploadChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length === 1) {
+      setShowUploadFileError(false);
+      console.log(e.target.files[0]);
+      const formData = new FormData();
+      formData.append("file", e.target.files[0]);
+      try {
+        setIsLoading(true);
+        const response = await api.postUploadImg(formData);
+        setUploadedImg(response.data.uploadedImage);
+        setUploadedImgNoBg(response.data.uploadedImageNoBg);
+      } catch (err) {
+        console.error(err);
+      }
+      setIsLoading(false);
+    } else {
+      setShowUploadFileError(true);
+    }
   };
 
   const openPopup = () => {
@@ -44,8 +74,19 @@ const BigRemove = () => {
             <img src={uplaod} alt="upload" />
             <span>העלאת תמונה</span>
           </button>
-          <input ref={fileInputRef} type="file" style={{ display: "none" }} />
-          <div className="bg_header_subtext">png, jpeg :פורמטים נתמכים</div>
+          <input
+            type="file"
+            accept=".png,.jpeg"
+            ref={fileInputRef}
+            onChange={fileUploadChange}
+            style={{ display: "none" }}
+          />
+          <div className="flex-column">
+            <p className="bg_header_subtext">png, jpeg :פורמטים נתמכים</p>
+            {showUploadFileError && (
+              <p className="upload_file_error">קובץ לא נתמך</p>
+            )}
+          </div>
         </div>
       </div>
 
@@ -71,7 +112,15 @@ const BigRemove = () => {
               <img src={noBackground} alt="noBackground" />
             </a>
           </nav>
-          {navLinkName === "no_bg" ? <ImageDis /> : <ImageDis imgOnly />}
+          {navLinkName === "no_bg" ? (
+            <ImageDis
+              isLoading={isLoading}
+              uploadedImg={uploadedImgNoBg}
+              setUploadedImgNoBg={setUploadedImgNoBg}
+            />
+          ) : (
+            <ImageDis isLoading={isLoading} uploadedImg={uploadedImg} imgOnly />
+          )}
 
           <div className="main_left_footer">
             <button className="main_left_footer_btn" onClick={openPopup}>
@@ -86,12 +135,14 @@ const BigRemove = () => {
         </Card>
         <Card className="main_card_right">
           <DownloadImg
+            filename={navLinkName === "no_bg" ? uploadedImgNoBg : uploadedImg}
             title="תמונה חינם"
             subtitle="תצוגה מקדימה של תמונה 612x408"
             buttonText="הורד"
             subsubtext="איכות טובה עד 0.25 מגה פיקסל"
           />
           <DownloadImg
+            filename={navLinkName === "no_bg" ? uploadedImgNoBg : uploadedImg}
             title="Pro"
             subtitle="תצוגה מקדימה של תמונה 1280x1920"
             buttonText="הורד HD"

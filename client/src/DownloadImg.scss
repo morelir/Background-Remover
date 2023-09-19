@@ -16,6 +16,7 @@
   }
 
   .downloadImg_button {
+    cursor: pointer;
     font-family: "Aduma";
     font-size: 2rem;
     background-color: inherit;
@@ -30,6 +31,10 @@
         )
         padding-box,
       linear-gradient(to left, rgb(8, 206, 203), rgb(27, 95, 221)) border-box;
+  }
+
+  .downloadImg_button:disabled{
+    cursor: not-allowed;
   }
 
   .downloadImg_subsubtext {
@@ -113,6 +118,10 @@
     .approve_btn {
       background: linear-gradient(to left, #08cecb, #b61bdd);
       color: white;
+    }
+
+    .approve_btn:disabled {
+      cursor: not-allowed;
     }
 
     .cancel_btn {
