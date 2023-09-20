@@ -10,7 +10,18 @@ pids
 
 # Dependency directories
 node_modules/
-public
+
+public/upload_img/*.jpeg
+public/upload_img/*.png
+
+public/upload_img_bg_color/*.jpeg
+public/upload_img_bg_color/*.png
+
+public/upload_img_no_bg/*.jpeg
+public/upload_img_no_bg/*.png
+
+
+
 
 # Environment variables
 *.env
