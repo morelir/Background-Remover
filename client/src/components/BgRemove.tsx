@@ -1,17 +1,17 @@
 import React, { useState, useRef } from "react";
-import close from "./assets/close.png";
-import uplaod from "./assets/Upload.png";
-import logo from "./assets/logo.png";
-import banner from "./assets/banner.png";
-import original from "./assets/Image.png";
-import terms from "./assets/eula.png";
-import noBackground from "./assets/Cleanup Edges.png";
+import close from "../assets/close.png";
+import uplaod from "../assets/Upload.png";
+import logo from "../assets/logo.png";
+import banner from "../assets/banner.png";
+import original from "../assets/Image.png";
+import terms from "../assets/eula.png";
+import noBackground from "../assets/Cleanup Edges.png";
 import "./BgRemove.scss";
-import Card from "./shared/Card";
+import Card from "../shared/Card";
 import DownloadImg from "./DownloadImg";
 import ImageDis from "./ImageDis";
-import Modal from "./shared/Modal";
-import { createApiClient } from "./core/api";
+import Modal from "../shared/Modal";
+import { createApiClient } from "../core/api";
 
 const api = createApiClient();
 
@@ -23,6 +23,7 @@ const BigRemove = () => {
   const [uploadedImg, setUploadedImg] = useState<string>();
   const [uploadedImgNoBg, setUploadedImgNoBg] = useState<string>();
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('')
 
 
   const navLinkHandler = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -39,7 +40,6 @@ const BigRemove = () => {
   const fileUploadChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length === 1) {
       setShowUploadFileError(false);
-      console.log(e.target.files[0]);
       const formData = new FormData();
       formData.append("file", e.target.files[0]);
       try {
@@ -47,8 +47,8 @@ const BigRemove = () => {
         const response = await api.postUploadImg(formData);
         setUploadedImg(response.data.uploadedImage);
         setUploadedImgNoBg(response.data.uploadedImageNoBg);
-      } catch (err) {
-        console.error(err);
+      } catch (err:any) {
+        setError(err.response.data.message);
       }
       setIsLoading(false);
     } else {
@@ -175,6 +175,15 @@ const BigRemove = () => {
         איאקוליס וולופטה דיאם. וסטיבולום אט דולור, קראס אגת לקטוס וואל אאוגו
         וסטיבולום סוליסי טידום בעליק. קונדימנטום קורוס בליקרה, נונסטי קלובר
         בריקנה סטום, לפריקך תצטריק לרטי.
+      </Modal>
+
+      <Modal
+      className="error_popup"
+        show={!!error}
+        onCancel={()=>setError('')}
+        header="שגיאה"
+      >
+        {error}
       </Modal>
     </div>
   );

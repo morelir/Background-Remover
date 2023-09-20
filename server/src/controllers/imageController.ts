@@ -2,8 +2,8 @@ import axios from "axios";
 import FormData from "form-data";
 import fs from "fs";
 import path from "path";
-import express, { NextFunction, Request, Response } from "express";
-import { AppError } from "../utils/appError";
+import { NextFunction, Request, Response } from "express";
+
 
 export const uploadImageNoBg = async (
   req: Request,
@@ -29,13 +29,10 @@ export const uploadImageNoBg = async (
       responseType: "arraybuffer",
       headers: {
         ...formData.getHeaders(),
-        "X-Api-Key": "PXQ1KM54DZqXo3Lsz44G36uS",
+        "X-Api-Key": process.env.Bg_Remove_Api_Key,
       },
-      // encoding: null,
     });
 
-    if (response.status != 200)
-      return console.error("Error:", response.status, response.statusText);
     fs.writeFileSync(`public/upload_img_no_bg/${filenameNoBg}`, response.data);
 
     res.status(200).json({
@@ -46,8 +43,9 @@ export const uploadImageNoBg = async (
       },
     });
   } catch (error: any) {
-    console.error("Request failed:", error);
-    return next(new AppError(error, 400));
+    res
+      .status(error.response.status || 400)
+      .json({ message: "Request Failed: Payment Required" });
   }
 };
 
@@ -80,13 +78,10 @@ export const uploadImageBgColor = async (
       responseType: "arraybuffer",
       headers: {
         ...formData.getHeaders(),
-        "X-Api-Key": "PXQ1KM54DZqXo3Lsz44G36uS",
+        "X-Api-Key": process.env.Bg_Remove_Api_Key,
       },
-      // encoding: null,
     });
 
-    if (response.status != 200)
-      return console.error("Error:", response.status, response.statusText);
     fs.writeFileSync(
       `public/upload_img_bg_color/${filenameBgColor}`,
       response.data
@@ -99,7 +94,8 @@ export const uploadImageBgColor = async (
       },
     });
   } catch (error: any) {
-    console.error("Request failed:", error);
-    return next(new AppError(error, 400));
+    res
+      .status(error.response.status || 400)
+      .json({ message: "Request Failed: Payment Required" });
   }
 };

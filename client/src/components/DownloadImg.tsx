@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import "./DownloadImg.scss";
-import check from "./assets/check.png";
-import newImg from "./assets/new.png";
-import notRobot from "./assets/not_robot.png";
-import downloadFolder from "./assets/Downloads Folder.png";
-import Modal from "./shared/Modal";
+import check from "../assets/check.png";
+import newImg from "../assets/new.png";
+import notRobot from "../assets/not_robot.png";
+import downloadFolder from "../assets/Downloads Folder.png";
+import Modal from "../shared/Modal";
 
 const DownloadImg: React.FC<{
   filename?: string;
@@ -31,7 +31,7 @@ const DownloadImg: React.FC<{
   };
 
   const downloadImg = () => {
-    fetch(`http://localhost:5000/${props.filename}`)
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/${props.filename}`)
       .then((response) => response.blob())
       .then((blob) => {
         const url = window.URL.createObjectURL(blob);
@@ -44,7 +44,7 @@ const DownloadImg: React.FC<{
         window.URL.revokeObjectURL(url);
         closePopup();
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.error(error));
   };
 
 

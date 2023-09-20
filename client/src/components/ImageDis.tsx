@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./ImageDis.scss";
-import warning from "./assets/warning.png";
-import { createApiClient } from "./core/api";
+import warning from "../assets/warning.png";
+import { createApiClient } from "../core/api";
 import CircularProgress from "@mui/material/CircularProgress";
 
 function generateCacheBust() {
@@ -73,7 +73,6 @@ const ImageDis: React.FC<{
           </span>
         </p>
         <button
-          // style={{ visibility: !imgOnly && uploadedImg ? "visible" : "hidden" }}
           className="color_btn"
           onClick={btnColorHandler}
         >
@@ -109,7 +108,7 @@ const ImageDis: React.FC<{
         {props.uploadedImg && !isLoading && (
           <img
             className="uploaded_img"
-            src={`http://localhost:5000/${props.uploadedImg}?${cacheBust}`}
+            src={`${process.env.REACT_APP_BACKEND_URL}/${props.uploadedImg}?${cacheBust}`}
             alt=""
           />
         )}

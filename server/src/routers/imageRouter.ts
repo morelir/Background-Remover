@@ -19,7 +19,6 @@ const multerFilter = (
   file: Express.Multer.File,
   cb: FileFilterCallback
 ) => {
-  console.log(file.mimetype);
   if (file.mimetype === "image/png" || file.mimetype === "image/jpeg") {
     cb(null, true);
   } else {

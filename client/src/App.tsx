@@ -1,6 +1,6 @@
 import React from "react";
 import './App.scss';
-import BgRemove from './BgRemove';
+import BgRemove from './components/BgRemove';
 
 function App() {
   return (

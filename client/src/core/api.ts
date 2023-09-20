@@ -23,21 +23,21 @@ export const createApiClient = (): ApiClient => {
   return {
     postUploadImg: (data) => {
       return axios
-        .post(`http://localhost:5000/upload-img`, data, {
+        .post(`${process.env.REACT_APP_BACKEND_URL}/upload-img`, data, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
         })
         .then((res) => res.data)
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          throw err;
+        });
     },
     postUploadImgWithBgColor: (data) => {
-      
       return axios
-        .post(`http://localhost:5000/upload-img/bg-color`, data
-        )
+        .post(`${process.env.REACT_APP_BACKEND_URL}/upload-img/bg-color`, data)
         .then((res) => res.data)
-        .catch((err) => console.log(err));
+        .catch((err) => console.error(err));
     },
   };
 };

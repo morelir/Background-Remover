@@ -1,24 +1,34 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# Logs
+logs
+*.log
 
-# dependencies
-/node_modules
-/nodemon.json
-/public
-/*.rest
-/.pnp
-.pnp.js
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
 
-# testing
-/coverage
+# Dependency directories
+node_modules/
+public
 
-# production
-/build
+# Environment variables
+*.env
 
-# misc
-.DS_Store
-.env.production
-.env.development.local
-.env.test.local
+# Build output
+build/
+dist/
+out/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
 
 
 npm-debug.log*
