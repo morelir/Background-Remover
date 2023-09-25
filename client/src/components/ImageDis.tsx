@@ -62,8 +62,8 @@ const ImageDis: React.FC<{
       <div
         className="img_display_subcont"
         style={{
-          visibility:
-            !props.imgOnly && props.uploadedImg ? "visible" : "hidden",
+          // visibility:
+          //   !props.imgOnly && props.uploadedImg ? "visible" : "hidden",
         }}
       >
         <p className="subcont_text">

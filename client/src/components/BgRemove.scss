@@ -182,3 +182,51 @@ $bg_cont_background-color: #222a34;
   font-size: 2rem;
   direction: rtl;
 }
+
+@media (max-width: 1200px) {
+  .bg_cont {
+    width: auto;
+  }
+
+  .img_display_cont .img_display_subcont .subcont_text {
+    display: none !important;
+  }
+}
+
+@media (max-width: 870px) {
+
+  .bg_cont .main_cont .main_card_left .main_left_footer {
+    display: none !important;
+  }
+
+  .bg_cont .footer_cont .logo {
+    width: 25%;
+    
+  }
+
+  .downloadImg_cont .downloadImg_subsubtext {
+    display: none !important;
+  }
+  
+}
+
+@media (max-width: 480px) {
+  .bg_cont .bg_header .close_img {
+    display: none;
+  }
+
+  .bg_cont .bg_header .bg_header_title {
+    font-size: 4.2rem;
+    
+  }
+
+  .bg_cont .bg_header .sub_cont {
+    margin-top: 1rem;
+   
+  }
+
+  .downloadImg_cont .downloadImg_title img{
+    display: none;
+  }
+  
+}
